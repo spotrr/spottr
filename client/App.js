@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-// import MainContainer from './containers/MainContainer';
 import { Switch, Route } from 'react-router-dom';
-import Profile from './components/Profile';
-import Homepage from './components/Homepage.jsx';
-import * as actions from './actions/actions';
-
-const mapStateToProps = (state) => ({
-  username: state.user.currentUser,
-  loggedIn: state.user.loggedIn,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  logInUser: (username) => dispatch(actions.userLoggedInCreator(username)),
-  logOutUser: () => dispatch(actions.userLoggedOut()),
-});
+// import Profile from './components/Profile';
+import Main from './components/Main'
+import EventCreator from './components/EventCreator';
 
 class App extends Component {
   constructor(props) {
@@ -23,44 +11,28 @@ class App extends Component {
   render() {
     return (
       <div>
+
         <Switch>
-          <Route exact path='/' component={Homepage} />
-          {/* <Route
-            exact
-            path='/profile'
-            render={() => (
-              <Profile
-                logInUser={this.props.logInUser}
-                username={this.props.username}
-              /> */}
-            {/* )} */}
+
+          <Route
+            exact path="/main"
+            render={() => <Main />}
+
           />
+
+          <Route
+            exact path="/create"
+            render={() => <EventCreator/>}
+
+          />
+
         </Switch>
+
+
       </div>
     );
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-//
-{
-  /* <div className="router">
-<main>
 
-<Switch>
-  <Route
-    exact
-    path="/"
-    component={ProfileCrap}
-  />
-
-  <Route
-    exact
-    path="/algos"
-    component={MainContainer}
-  />
-
-</Switch>
-</main>
-</div> */
-}
