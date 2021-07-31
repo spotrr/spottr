@@ -5,6 +5,17 @@ const app = express();
 const index = path.join(__dirname, '../client/index.html');
 const PORT = 3000;
 
+// const MONGO_URI = ''
+// mongoose.connect(MONGO_URI, {
+//     // options for the connect method to parse the URI
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     // sets the name of the DB that our collections are part of
+//     dbName: ''
+//   })
+//     .then(() => console.log('Connected to Mongo DB.'))
+//     .catch(err => console.log(err));
+
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use(express.static(path.join(__dirname, '..', '/client/')));
 
