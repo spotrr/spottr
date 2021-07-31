@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     publicPath: '/dist',
     contentBase: './client',
-    hot: true,
+    // hot: true,
     proxy: {
       '/': {
         target: 'http://localhost:3000',

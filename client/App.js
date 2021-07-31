@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import MainContainer from './containers/MainContainer';
+// import MainContainer from './containers/MainContainer';
 import { Switch, Route } from 'react-router-dom';
 import Profile from './components/Profile';
+import Homepage from './components/Homepage.jsx';
 import * as actions from './actions/actions';
 
 const mapStateToProps = (state) => ({
@@ -23,17 +24,16 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/main' render={() => <h1>main</h1>} />
-
-          <Route
+          <Route exact path='/' component={Homepage} />
+          {/* <Route
             exact
             path='/profile'
             render={() => (
               <Profile
                 logInUser={this.props.logInUser}
                 username={this.props.username}
-              />
-            )}
+              /> */}
+            {/* )} */}
           />
         </Switch>
       </div>
@@ -42,16 +42,17 @@ class App extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+//
 {
   /* <div className="router">
 <main>
-  
+
 <Switch>
   <Route
     exact
     path="/"
     component={ProfileCrap}
-  />  
+  />
 
   <Route
     exact
@@ -59,7 +60,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
     component={MainContainer}
   />
 
-</Switch> 
+</Switch>
 </main>
 </div> */
 }
