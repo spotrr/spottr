@@ -7,7 +7,6 @@ mongoose
     // options for the connect method to parse the URI
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // sets the name of the DB that our collections are part of
     dbName: 'spottr',
   })
   .then(() => console.log('Connected to Mongo DB.'))
@@ -28,23 +27,23 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  sports: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  //are the [] brackets right in user_events?
-  event_id: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'event',
-    },
-  ],
-  about: {
-    type: String,
-    required: true,
-  },
+  // sports: [
+  //   {
+  //     type: String,
+  //     required: true,
+  //   },
+  // ],
+  // //are the [] brackets right in user_events?
+  // event_id: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'event',
+  //   },
+  // ],
+  // about: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const User = mongoose.model('user', userSchema);
@@ -69,4 +68,5 @@ const eventSchema = new Schema({
 });
 
 const Event = mongoose.model('event', eventSchema);
-module.exports = User;
+
+module.exports = { User, Event };
