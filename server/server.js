@@ -1,35 +1,55 @@
 const express = require('express');
 const path = require('path');
-
+const cors = require('cors')
 const app = express();
 const index = path.join(__dirname, '../client/index.html');
 const PORT = 3000;
+const { OAuth2Client } = require('google-auth-library')
+const CLIENT_ID = '62713775190-jaen743kigprmkr2hkg6gcg9cc2mj0dq.apps.googleusercontent.com';
+const client = new OAuth2Client(CLIENT_ID);
+const { User, Event } = require('./userModels');
 
-// const MONGO_URI = ''
-// mongoose.connect(MONGO_URI, {
-//     // options for the connect method to parse the URI
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     // sets the name of the DB that our collections are part of
-//     dbName: ''
-//   })
-//     .then(() => console.log('Connected to Mongo DB.'))
-//     .catch(err => console.log(err));
+
+
+app.use(cors());
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use(express.static(path.join(__dirname, '..', '/client/')));
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.status(200).sendFile(index);
+  return res.status(200).sendFile(index);
 });
 
 app.get('/main', (req, res) => {
   return res.status(200).sendFile(index);
 });
 
-app.get('/profile', (req, res) => {
-  return res.status(200).sendFile(index);
-});
+// GOOGLE AUTH
+
+// Step 1: send access token to Google
+//client sends access token in body
+//create ticket and use google auth library to authenticate token
+
+app.post('/google/auth', (req, res) => {
+
+  const { profile }  = req.body;
+
+  // const ticket = client.verifyIdToken({
+  //   idToken: token,
+  //   audience: CLIENT_ID
+  // });
+
+  // TICKET PAYLOAD GIVES US USER INFORMATION
+  // **** SEND THIS INFORMATION TO DATABASE ***//
+  // const { name, email } = ticket.getPayload();
+  // console.log(name);
+
+  User.create({username:profile.email, first_name:profile.givenName, last_name:profile.familyName})
+}
+)
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);

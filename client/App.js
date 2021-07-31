@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 // import Profile from './components/Profile';
 import Main from './components/Main'
 import EventCreator from './components/EventCreator';
+import Homepage from './components/Homepage.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -11,24 +12,29 @@ class App extends Component {
   render() {
     return (
       <div>
-        
-        <Switch> 
-          
-          <Route 
-            exact path="/main" 
+        <Switch>
+
+        <Route
+            exact path="/"
+            render={() => <Homepage />}
+
+          />
+
+          <Route
+            exact path="/main"
             render={() => <Main />}
 
           />
-          
-          <Route 
-            exact path="/create" 
+
+          <Route
+            exact path="/create"
             render={() => <EventCreator/>}
 
           />
 
         </Switch>
 
-        
+
       </div>
     );
   }
@@ -36,33 +42,4 @@ class App extends Component {
 
 export default App;
 
-{
-  /* <div className="router">
-<main>
-  
-<Switch>
-  <Route
-    exact
-    path="/"
-    component={ProfileCrap}
-  />  
 
-  <Route
-    exact
-    path="/algos"
-    component={MainContainer}
-  />
-
-</Switch> 
-</main>
-</div> */
-}
-
-
- {/* <Route exact path='/createEvent' render={() => <EventCreator />} /> */}
-
-          {/* <Route
-            exact
-            path='/profile'
-            render={() => (<Profile/>)}
-          /> */}
