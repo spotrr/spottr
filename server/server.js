@@ -43,8 +43,6 @@ app.post('/create', userController.createEvent, (req, res) => {
 //client sends access token in body
 //create ticket and use google auth library to authenticate token
 
-app.post('/google/auth', (req, res) => {
-
 app.use('/api', apiRouter)
 
 app.get('/create', (req, res) => {
@@ -54,6 +52,7 @@ app.get('/create', (req, res) => {
 app.post('/create', userController.createEvent, (req, res) => {
   return res.status(200);
 });
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });

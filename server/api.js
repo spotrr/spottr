@@ -11,5 +11,4 @@ router.get('/', userController.getEvent,
 (req, res) => res.status(200).json([...res.locals.event]));
 
 
-
 module.exports = router;
