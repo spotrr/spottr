@@ -17,9 +17,11 @@ userController.getUser = async (req, res, next) => {
 
 userController.getEvent = async (req, res, next) => {
   try {
-    const _id = req.query.id;
+    // const _id = req.query.id;
     const eventDoc = await Event.find({});
+    // console.log(eventDoc, 'this works?');
     res.locals.event = eventDoc;
+    // console.log(res.locals.event)
     return next();
   } catch (err) {
     return next({
@@ -31,11 +33,17 @@ userController.getEvent = async (req, res, next) => {
 
 userController.createEvent = async (req, res, next) => {
   try {
+    
     const event = await Event.create({
       typeofEvent: req.body.typeofEvent,
-      date: req.body.date,
+      // date: req.body.date,
       description: req.body.description,
     });
+
+    res.locals.event = event
+    console.log('event', res.locals.event)
+    console.log('event', event.json())
+    console.log('create event works')
     return next();
   } catch (err) {
     return next({
