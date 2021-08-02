@@ -1,15 +1,18 @@
-import React, { useState, useSelector } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../constants/actionTypes';
 const SignUpForm = (props) => {
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [description, setDescription] = useState('');
   const [sports, setSports] = useState({ basketball: false, soccer: false });
+  const dispatch = useDispatch();
   const handleSubmit = (form) => {
     form.preventDefault();
     // Send form data to server so it can get saved into database
     const data = {
       username: currentUser,
-      sports: sports,
-      about: description,
+      sports: Object.keys(sports).filter((elem) => sports[elem]),
+      description: description,
     };
     // POST TO SERVER
     fetch('http://localhost:3000/api/form/', {
@@ -20,7 +23,15 @@ const SignUpForm = (props) => {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       },
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.username === currentUser)
+          dispatch({
+            type: types.USER_LOGGED_IN,
+            payload: data.username,
+          });
+      });
   };
 
   return (
