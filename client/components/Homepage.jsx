@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useSelector, useDispatch } from 'react-redux';
 import * as types from '../constants/actionTypes';
+import REACT_APP_CLIENT_ID from '../../clientid.js';
+
+
 // Created Client ID for project on Google console
-const CLIENT_ID =
-  '62713775190-jaen743kigprmkr2hkg6gcg9cc2mj0dq.apps.googleusercontent.com';
+const CLIENT_ID = REACT_APP_CLIENT_ID;
 
 const GoogleButton = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -45,8 +47,12 @@ const GoogleButton = (props) => {
     console.log(response);
   };
 
-  // what is single host origin
+  const img = '../images/logo.png'
   return (
+  <div>
+    <div>
+      <img src={img} />
+    </div>
     <div>
       <GoogleLogin
         clientId={CLIENT_ID}
@@ -56,6 +62,7 @@ const GoogleButton = (props) => {
         cookiePolicy={'single_host_origin'}
       />
     </div>
+  </div>
   );
 };
 
