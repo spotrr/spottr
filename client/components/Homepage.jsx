@@ -49,7 +49,7 @@ const GoogleButton = (props) => {
 
   const img = '../images/logo.png'
   return (
-  <div>
+  <div className='homepage'>
     <div>
       <img src={img} />
     </div>
