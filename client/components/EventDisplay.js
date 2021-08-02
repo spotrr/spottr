@@ -3,15 +3,20 @@ import Event from './Event.js';
  
  //eventID from eventList
  //user from eventList
-
+//TODOS
+  //need to grab 
  const EventDisplay = props => {
    
+
+
    const eachEvent = props.eventList.map((event, i) => {
      return <Event key={i}
+      //THIS IS THE USER WHO CREATED THE EVENT. CHANGE THIS TO THE ACTUAL USER NAME THAT WE GET FORM THE STATE.
+       fakeName={props.fakeNames[i]}
        typeofEvent={event.typeofEvent}
-      //  favSport={event.favSport}
+       eventID={event._id}
        description={event.description}
-      //  interested={props.interested}
+       likes={event.likes}
      />;
    });
    return (
