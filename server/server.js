@@ -5,8 +5,8 @@ const app = express();
 const index = path.join(__dirname, '../client/index.html');
 const PORT = 3000;
 const { User, Event } = require('./userModels');
+const userController = require('./userController');
 const apiRouter = require('./api');
-
 
 app.use(cors());
 
@@ -15,10 +15,35 @@ app.use(express.static(path.join(__dirname, '..', '/client/')));
 
 app.use(express.json());
 
+// app.get('/', (req, res) => {
+//   return res.status(200).sendFile(index);
+// });
+
+
+// userController.getUser
 app.get('/main', (req, res) => {
   return res.status(200).sendFile(index);
 });
 
+
+app.use('/api', apiRouter)
+
+app.get('/create', (req, res) => {
+  return res.status(200).sendFile(index);
+});
+
+app.post('/create', userController.createEvent, (req, res) => {
+  return res.status(200);
+});
+  // return res.status(200)
+
+// GOOGLE AUTH
+
+// Step 1: send access token to Google
+//client sends access token in body
+//create ticket and use google auth library to authenticate token
+
+app.post('/google/auth', (req, res) => {
 
 app.use('/api', apiRouter)
 

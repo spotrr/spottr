@@ -8,8 +8,8 @@ import Event from './Event.js';
    
    const eachEvent = props.eventList.map((event, i) => {
      return <Event key={i}
-       username={event.username}
-       favSport={event.favSport}
+       typeofEvent={event.typeofEvent}
+      //  favSport={event.favSport}
        description={event.description}
       //  interested={props.interested}
      />;

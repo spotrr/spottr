@@ -1,20 +1,14 @@
 const express = require('express');
 const userController = require('./userController');
-const authController = require('./authController');
 const router = express.Router()
+const path = require('path')
+// const index = path.join(__dirname, '../client/index.html');
+// router.get('/', userController.getUser,
+// (req, res) => res.status(200).json(res.locals.user));
 
-router.get('/', userController.getUser,
-(req, res) => res.status(200).json(res.locals.user));
-
+//changed from event to main
 router.get('/', userController.getEvent,
 (req, res) => res.status(200).json([...res.locals.event]));
-
-router.post('/google/auth', authController.authToken, authController.userCheck, (req, res) => {
-  if (res.locals.newUser) res.status(200).redirect('/signup')
-  res.status(200).redirect('/mainpage');
-});
-
-
 
 
 
