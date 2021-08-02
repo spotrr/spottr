@@ -18,6 +18,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   first_name: {
     type: String,
@@ -27,23 +28,22 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  // sports: [
-  //   {
-  //     type: String,
-  //     required: true,
-  //   },
-  // ],
-  // //are the [] brackets right in user_events?
-  // event_id: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'event',
-  //   },
-  // ],
-  // about: {
-  //   type: String,
-  //   required: true,
-  // },
+  sports: [
+    {
+      type: String,
+    },
+  ],
+  //are the [] brackets right in user_events?
+  event_id: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
+  about: {
+    type: String,
+    // required: true,
+  },
 });
 
 const User = mongoose.model('user', userSchema);
@@ -61,10 +61,10 @@ const eventSchema = new Schema({
   //   type: String,
   //   required: true,
   // },
-  description: { 
+  description: {
     type: String,
     required: true,
-   }
+  },
 
   // user_id: {
   //   type: Schema.Types.ObjectID,
