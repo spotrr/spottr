@@ -21,6 +21,8 @@
   "author": "CodesmithLLC https://github.com/CodesmithLLC <hello@codesmith.io>",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.3.0",
     "cookie-parser": "^1.4.1",
