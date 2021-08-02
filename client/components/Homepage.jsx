@@ -25,7 +25,8 @@ const GoogleButton = (props) => {
         "Content-Type": "application/json"
     }
   })
-  // set session -->
+  .then(res => res.json())
+  .then(data => console.log(data))
   };
 
   const handleLoginFailure = (response) => {
