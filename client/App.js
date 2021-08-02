@@ -6,19 +6,13 @@ import Main from './components/Main';
 import EventCreator from './components/EventCreator';
 import Homepage from './components/Homepage.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
+import AuthRoute from './components/AuthRoute';
 const App = (props) => {
-  const currentUser = useSelector((state) => state.user.currentUser);
   const isNewUser = useSelector((state) => state.user.isNewUser);
   const loggedIn = useSelector((state) => state.user.loggedIn);
-  return (
-    <div>
-      <Switch>
-        <Route exact path='/signup' render={() => <SignUpForm />} />
-        <Route exact path='/main' render={() => <Main />} />
-        <Route exact path='/create' render={() => <EventCreator />} />
-      </Switch>
-    </div>
-  );
+  if (loggedIn) return <Main />;
+  else if (isNewUser) return <SignUpForm />;
+  else return <Homepage />;
 };
-
+//butts
 export default App;

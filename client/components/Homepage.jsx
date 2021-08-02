@@ -27,7 +27,6 @@ const GoogleButton = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         // check if user is new or not and change state accordingly
         if (data.newUser)
           dispatch({

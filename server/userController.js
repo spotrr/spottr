@@ -5,9 +5,12 @@ const userController = {};
 userController.updateUser = async (req, res, next) => {
   // takes in form data and updates the User document
   const { username, sports, description } = req.body;
-  console.log(sports);
-  // let update = await User.findOneAndUpdate({username: username}, {sports: sport, about: description}, {new: true});
-  // console.log(update);
+  let update = await User.findOneAndUpdate(
+    { username: username },
+    { sports: sports, about: description },
+    { new: true }
+  );
+  res.locals.data = { username: update.username };
   return next();
 };
 
@@ -26,7 +29,6 @@ userController.getUser = async (req, res, next) => {
 
 userController.getEvent = async (req, res, next) => {
   try {
-    
     const eventDoc = await Event.find({});
 
     res.locals.event = eventDoc;
@@ -49,9 +51,9 @@ userController.createEvent = async (req, res, next) => {
       description: req.body.description,
     });
 
-    res.locals.event = event
-    console.log('event1', res.locals.event)
-    console.log('create event works')
+    res.locals.event = event;
+    console.log('event1', res.locals.event);
+    console.log('create event works');
     return next();
   } catch (err) {
     return next({
@@ -61,13 +63,15 @@ userController.createEvent = async (req, res, next) => {
   }
 };
 
-
 userController.likeEvent = async (req, res, next) => {
   try {
-    const { username, id } = req.body; 
+    const { username, id } = req.body;
     // const fakeUser = "victoriousvan"
-    console.log('eventID/uesrname in likeevent', id, username)
-    const doc = await Event.findOneAndUpdate({ _id: id }, { $push: {likes: username}});
+    console.log('eventID/uesrname in likeevent', id, username);
+    const doc = await Event.findOneAndUpdate(
+      { _id: id },
+      { $push: { likes: username } }
+    );
     return next();
     // console.log(doc)
   } catch (e) {
@@ -76,9 +80,23 @@ userController.likeEvent = async (req, res, next) => {
       message: { err: 'Error occured in userController.likeEvent' },
     });
   }
-  
+};
 
-  
+userController.deleteEvent = async (req, res, next) => {
+  try {
+    console.log('im here in deleteEvent');
+    // const { id } = req.body;
+    // // const fakeUser = "victoriousvan"
+    // console.log('eventID', id);
+    // const doc = await Event.findOneAndRemove({ _id: id });
+    // console.log(doc);
+    // return next();
+  } catch (e) {
+    return next({
+      log: `userController.createEvent: ERROR: ${err}`,
+      message: { err: 'Error occured in userController.likeEvent' },
+    });
+  }
 };
 
 module.exports = userController;
