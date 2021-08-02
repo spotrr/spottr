@@ -15,26 +15,24 @@ authController.authToken = (req, res, next) => {
         audience: CLIENT_ID,
     });
     const payload = ticket.getPayload();
-    // SAVE PAYLOAD to res.locals; this includes name, email etc 
+    // SAVE PAYLOAD to res.locals; this includes name, email etc
     res.locals.googleInfo = payload;
-    return next();
   }
   verify().catch(console.error);
+
+  const {email, given_Name, family_Name} = res.locals.googleInfo;
+
+
+
+
+  return next();
+
+
+
+
+
+
 };
-
-authController.userCheck = (req, res, next) => {
-  // Checks if this is a new user or not and redirects as applicable
-
-  const { email } = req.locals.googleInfo;
-  User.find({username: email}, (err, result) => {
-    if (err) {
-      res.locals.newUser = true;
-      return next()
-    }
-    return next();
-  })
-};
-
 
 
 module.exports = authController;
