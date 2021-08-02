@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import Profile from './components/Profile';
 import Main from './components/Main';
-import EventCreator from './components/EventCreator';
 import Homepage from './components/Homepage.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
-import AuthRoute from './components/AuthRoute';
 const App = (props) => {
   const isNewUser = useSelector((state) => state.user.isNewUser);
   const loggedIn = useSelector((state) => state.user.loggedIn);

@@ -1,30 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Event from './Event.js';
- 
- //eventID from eventList
- //user from eventList
+import axios from 'axios';
+
+//eventID from eventList
+//user from eventList
 //TODOS
-  //need to grab 
- const EventDisplay = props => {
-   
+//need to grab
+const EventDisplay = (props) => {
+  const [eventList, setEventList] = useState([]);
+  useEffect(() => fetchEvents(), []);
+  const fetchEvents = async () => {
+    const res = await axios.get('/api/');
+    let tempList = res.data;
+    console.log(tempList, 'eventList!!!!!!!!!!!!!!!!!!');
+    if (!Array.isArray(eventList)) tempList = [];
+    else setEventList(tempList);
+  };
 
+  const eachEvent = eventList.map((event, i) => {
+    return (
+      <Event
+        key={i}
+        //THIS IS THE USER WHO CREATED THE EVENT. CHANGE THIS TO THE ACTUAL USER NAME THAT WE GET FORM THE STATE.
+        username={event.username}
+        typeofEvent={event.typeofEvent}
+        eventID={event._id}
+        description={event.description}
+        likes={event.likes}
+      />
+    );
+  });
+  return (
+    <div className='displayBox'>
+      <h4>Events</h4>
+      {eachEvent}
+    </div>
+  );
+};
 
-   const eachEvent = props.eventList.map((event, i) => {
-     return <Event key={i}
-      //THIS IS THE USER WHO CREATED THE EVENT. CHANGE THIS TO THE ACTUAL USER NAME THAT WE GET FORM THE STATE.
-       fakeName={props.fakeNames[i]}
-       typeofEvent={event.typeofEvent}
-       eventID={event._id}
-       description={event.description}
-       likes={event.likes}
-     />;
-   });
-   return (
-     <div className="displayBox" >
-       <h4>Events</h4>
-       {eachEvent}
-     </div>
-   );
- };
- 
- export default EventDisplay;
+export default EventDisplay;

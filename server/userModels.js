@@ -18,7 +18,6 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
   },
   first_name: {
     type: String,
@@ -49,7 +48,10 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 const eventSchema = new Schema({
-  
+  username: {
+    type: String,
+    required: true,
+  },
   typeofEvent: {
     type: String,
     required: true,
@@ -65,10 +67,8 @@ const eventSchema = new Schema({
   description: {
     type: String,
     required: true,
-   },
-  likes: [
-    {type: String}
-  ]
+  },
+  likes: [{ type: String }],
   // user_id: {
   //   type: Schema.Types.ObjectID,
   //   ref: 'user',

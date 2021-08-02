@@ -44,8 +44,10 @@ userController.getEvent = async (req, res, next) => {
 
 userController.createEvent = async (req, res, next) => {
   try {
-    // console.log(res.locals.googleInfo.email);
+    console.log(req.body, 'req.body in create Event');
+
     const event = await Event.create({
+      username: req.body.username,
       typeofEvent: req.body.typeofEvent,
       // date: req.body.date,
       description: req.body.description,
@@ -85,13 +87,13 @@ userController.likeEvent = async (req, res, next) => {
 userController.deleteEvent = async (req, res, next) => {
   try {
     console.log('im here in deleteEvent');
-    // const { id } = req.body;
+    const { id } = req.body;
     // // const fakeUser = "victoriousvan"
     // console.log('eventID', id);
-    // const doc = await Event.findOneAndRemove({ _id: id });
-    // console.log(doc);
-    // return next();
-  } catch (e) {
+    const doc = await Event.findByIdAndRemove(id);
+    console.log(doc);
+    return next();
+  } catch (err) {
     return next({
       log: `userController.createEvent: ERROR: ${err}`,
       message: { err: 'Error occured in userController.likeEvent' },

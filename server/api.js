@@ -9,11 +9,11 @@ router.get('/', userController.getEvent, (req, res) =>
 );
 
 router.post('/', userController.likeEvent, (req, res) => {
-  return res.status(200);
+  return res.status(200).send();
 });
 
-router.post('/delete', userController.deleteEvent, (req, res) => {
-  return res.status(200);
+router.delete('/delete', userController.deleteEvent, (req, res) => {
+  return res.status(200).send();
 });
 
 // Authenticates google token and adds new user
