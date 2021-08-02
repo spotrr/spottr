@@ -49,18 +49,23 @@ const userSchema = new Schema({
 const User = mongoose.model('user', userSchema);
 
 const eventSchema = new Schema({
-  event_name: {
+  typeofEvent: {
     type: String,
     required: true,
   },
-  location: {
+  // location: {
+  //   type: String,
+  //   required: true,
+  // },
+  // sports: {
+  //   type: String,
+  //   required: true,
+  // },
+  description: { 
     type: String,
     required: true,
-  },
-  sports: {
-    type: String,
-    required: true,
-  },
+   }
+
   // user_id: {
   //   type: Schema.Types.ObjectID,
   //   ref: 'user',

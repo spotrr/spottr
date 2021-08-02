@@ -8,8 +8,8 @@ const { OAuth2Client } = require('google-auth-library')
 const CLIENT_ID = '62713775190-jaen743kigprmkr2hkg6gcg9cc2mj0dq.apps.googleusercontent.com';
 const client = new OAuth2Client(CLIENT_ID);
 const { User, Event } = require('./userModels');
-
-
+const userController = require('./userController');
+const apiRouter = require('./api');
 
 app.use(cors());
 
@@ -18,13 +18,27 @@ app.use(express.static(path.join(__dirname, '..', '/client/')));
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(index);
-});
+// app.get('/', (req, res) => {
+//   return res.status(200).sendFile(index);
+// });
 
+
+// userController.getUser
 app.get('/main', (req, res) => {
   return res.status(200).sendFile(index);
 });
+
+
+app.use('/api', apiRouter)
+
+app.get('/create', (req, res) => {
+  return res.status(200).sendFile(index);
+});
+
+app.post('/create', userController.createEvent, (req, res) => {
+  return res.status(200);
+});
+  // return res.status(200)
 
 // GOOGLE AUTH
 

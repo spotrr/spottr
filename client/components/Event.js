@@ -15,8 +15,8 @@ const Event = props => {
 //   }
   return (
     <div className="eventBox" >
-      <p><b>username:</b> {props.username}</p>
-      <p><b>favSport:</b> {props.favSport}</p>
+      <p><b>username:</b> {props.typeofEvent}</p>
+      {/* <p><b>favSport:</b> {props.favSport}</p> */}
       <p><b>description:</b> {props.description}</p>
       
       {/* <button onClick={interested} userID={props.userID} eventID={props.userID}>interested</button> */}
