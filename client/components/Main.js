@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import EventDisplay from './EventDisplay.js'
 import axios from 'axios';
+import NavBar from './AppBar.js';
+
 
 class Main extends Component {
     constructor(props) {
@@ -29,18 +31,17 @@ class Main extends Component {
     render() {
 
       return (
-          
         <div>
-          <EventDisplay 
+          <NavBar />
+          <EventDisplay
             eventList={this.state.eventList}
             fakeNames={this.state.fakeNames}
           />
 
-        </div> 
+        </div>
         )
     }
   }
-  
+
   export default Main;
 
-  

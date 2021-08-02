@@ -1,12 +1,12 @@
 import React from 'react';
 import Event from './Event.js';
- 
+
  //eventID from eventList
  //user from eventList
 //TODOS
-  //need to grab 
+  //need to grab
  const EventDisplay = props => {
-   
+
 
 
    const eachEvent = props.eventList.map((event, i) => {
@@ -26,5 +26,5 @@ import Event from './Event.js';
      </div>
    );
  };
- 
+
  export default EventDisplay;

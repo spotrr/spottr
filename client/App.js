@@ -7,6 +7,8 @@ import EventCreator from './components/EventCreator';
 import Homepage from './components/Homepage.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
 import AuthRoute from './components/AuthRoute';
+import './stylesheets/styles.scss';
+
 const App = (props) => {
   const isNewUser = useSelector((state) => state.user.isNewUser);
   const loggedIn = useSelector((state) => state.user.loggedIn);
