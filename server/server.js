@@ -7,6 +7,7 @@ const PORT = 3000;
 const { User, Event } = require('./userModels');
 const userController = require('./userController');
 const apiRouter = require('./api');
+// const favsRouter = require('./favs');
 
 app.use(cors());
 
@@ -15,11 +16,6 @@ app.use(express.static(path.join(__dirname, '..', '/client/')));
 
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//   return res.status(200).sendFile(index);
-// });
-
-// userController.getUser
 app.get('/main', (req, res) => {
   return res.status(200).sendFile(index);
 });
