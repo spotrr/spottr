@@ -3,11 +3,12 @@ import { useDispatch } from 'react-redux';
 const SignUpForm = (props) => {
   const [description, setDescription] = useState('');
   const [sports, setSports] = useState({ basketball: false, soccer: false });
+
   const handleSubmit = (form) => {
     form.preventDefault();
     // Send form data to server so it can get saved into database
     const data = {
-      username: currentUser,
+      // username: currentUser,
       sports: sports,
       about: description,
     };

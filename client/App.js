@@ -10,19 +10,15 @@ const App = (props) => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isNewUser = useSelector((state) => state.user.isNewUser);
   const loggedIn = useSelector((state) => state.user.loggedIn);
-  if (isNewUser) {
-    return <SignUpForm />;
-  } else if (!loggedIn) return <Homepage />;
-  else {
-    return (
-      <div>
-        <Switch>
-          <Route exact path='/main' render={() => <Main />} />
-          <Route exact path='/create' render={() => <EventCreator />} />
-        </Switch>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Switch>
+        <Route exact path='/signup' render={() => <SignUpForm />} />
+        <Route exact path='/main' render={() => <Main />} />
+        <Route exact path='/create' render={() => <EventCreator />} />
+      </Switch>
+    </div>
+  );
 };
 
 export default App;
