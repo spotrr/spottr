@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Main from './components/Main'
 import EventCreator from './components/EventCreator';
 import Homepage from './components/Homepage.jsx';
+import SignUpForm from './components/SignUpForm.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -17,13 +18,16 @@ class App extends Component {
         <Route
             exact path="/"
             render={() => <Homepage />}
-
           />
 
           <Route
             exact path="/main"
             render={() => <Main />}
+          />
 
+          <Route
+            exact path="/signup"
+            render={() => <SignUpForm />}
           />
 
           <Route

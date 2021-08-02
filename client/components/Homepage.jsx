@@ -12,20 +12,20 @@ const GoogleButton = (props) => {
   // log in function ==> updates state and sends access token to backend
   const login = (googleData) => {
     setLoggedIn(true);
-    setAccessToken(googleData.accessToken);
-    fetch('http://localhost:3000/google/auth',
+    window.sessionStorage.setItem("access_token", googleData.accessToken);
+    fetch('http://localhost:3000/api/google/auth',
     {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({
       token: googleData.tokenId,
-      profile: googleData.profileObj
       }),
       headers: {
         'Access-Control-Allow-Origin':'*',
         "Content-Type": "application/json"
     }
   })
+  // set session -->
   };
 
   const handleLoginFailure = (response) => {
