@@ -26,11 +26,11 @@ userController.getUser = async (req, res, next) => {
 
 userController.getEvent = async (req, res, next) => {
   try {
-    // const _id = req.query.id;
+    
     const eventDoc = await Event.find({});
-    // console.log(eventDoc, 'this works?');
+
     res.locals.event = eventDoc;
-    // console.log(res.locals.event)
+
     return next();
   } catch (err) {
     return next({
@@ -42,16 +42,16 @@ userController.getEvent = async (req, res, next) => {
 
 userController.createEvent = async (req, res, next) => {
   try {
+    // console.log(res.locals.googleInfo.email);
     const event = await Event.create({
       typeofEvent: req.body.typeofEvent,
       // date: req.body.date,
       description: req.body.description,
     });
 
-    res.locals.event = event;
-    console.log('event', res.locals.event);
-    console.log('event', event.json());
-    console.log('create event works');
+    res.locals.event = event
+    console.log('event1', res.locals.event)
+    console.log('create event works')
     return next();
   } catch (err) {
     return next({
@@ -59,6 +59,26 @@ userController.createEvent = async (req, res, next) => {
       message: { err: 'Error occured in userController.createEvent' },
     });
   }
+};
+
+
+userController.likeEvent = async (req, res, next) => {
+  try {
+    const { username, id } = req.body; 
+    // const fakeUser = "victoriousvan"
+    console.log('eventID/uesrname in likeevent', id, username)
+    const doc = await Event.findOneAndUpdate({ _id: id }, { $push: {likes: username}});
+    return next();
+    // console.log(doc)
+  } catch (e) {
+    return next({
+      log: `userController.createEvent: ERROR: ${err}`,
+      message: { err: 'Error occured in userController.likeEvent' },
+    });
+  }
+  
+
+  
 };
 
 module.exports = userController;

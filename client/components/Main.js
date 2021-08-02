@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
 import EventDisplay from './EventDisplay.js'
 import axios from 'axios';
-// import { connect } from 'react-redux';
-// import * as actions from '../actions/actions';
-
-// const mapStateToProps = (state) => ({
-//     username: state.user.currentUser,
-//     loggedIn: state.user.loggedIn,
-//   });
-  
-//   const mapDispatchToProps = (dispatch) => ({
-//     logInUser: (username) => dispatch(actions.userLoggedInCreator(username)),
-//     logOutUser: () => dispatch(actions.userLoggedOut()),
-//   });
 
 class Main extends Component {
     constructor(props) {
@@ -20,6 +8,7 @@ class Main extends Component {
       this.state = {
         eventList: [],
         fetchedChars: false,
+        fakeNames: ['van', 'junie', 'ronke', 'storm', 'strom', 'strmo', 'may' ]
       }
     }
 // may need to map events
@@ -44,6 +33,7 @@ class Main extends Component {
         <div>
           <EventDisplay 
             eventList={this.state.eventList}
+            fakeNames={this.state.fakeNames}
           />
 
         </div> 
@@ -52,5 +42,5 @@ class Main extends Component {
   }
   
   export default Main;
-//   connect(mapStateToProps, mapDispatchToProps)
+
   
