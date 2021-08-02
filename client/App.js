@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Main from './components/Main';
 import Homepage from './components/Homepage.jsx';
 import SignUpForm from './components/SignUpForm.jsx';
+import './stylesheets/styles.scss';
 const App = (props) => {
   const isNewUser = useSelector((state) => state.user.isNewUser);
   const loggedIn = useSelector((state) => state.user.loggedIn);

@@ -4,11 +4,14 @@ import * as types from '../constants/actionTypes';
 import EventDisplay from './EventDisplay.js';
 import EventCreator from './EventCreator.js';
 import axios from 'axios';
+import NavBar from './AppBar.js';
+
 
 const Main = () => {
   const [toggleCreator, setToggle] = useState(true);
   return (
     <div>
+      <NavBar />
       <button onClick={() => setToggle(!toggleCreator)}>
         {' '}
         {toggleCreator ? 'Add Event' : 'Back to Events'}
@@ -24,15 +27,3 @@ const Main = () => {
 // may need to map events
 
 export default Main;
-
-// axios.get('/api/',)
-// .then(res => res.data)
-// .then((eventList) => {
-//   console.log(eventList, 'eventList!!!!!!!!!!!!!!!!!!')
-//   if (!Array.isArray(eventList)) eventList = [];
-//   return this.setState({
-//     eventList,
-//     fetchedChars: true
-//   });
-// })
-// .catch(err => console.log('eventList.componentDidMount: get eventList: ERROR: ', err));

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Event from './Event.js';
+
 import axios from 'axios';
 
 //eventID from eventList
@@ -16,6 +17,7 @@ const EventDisplay = (props) => {
     if (!Array.isArray(eventList)) tempList = [];
     else setEventList(tempList);
   };
+
 
   const eachEvent = eventList.map((event, i) => {
     return (
@@ -37,5 +39,6 @@ const EventDisplay = (props) => {
     </div>
   );
 };
+
 
 export default EventDisplay;
