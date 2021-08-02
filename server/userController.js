@@ -2,6 +2,15 @@ const { User, Event } = require('./userModels');
 
 const userController = {};
 
+userController.updateUser = async (req, res, next) => {
+  // takes in form data and updates the User document
+  const { username, sports, description } = req.body;
+  console.log(sports);
+  // let update = await User.findOneAndUpdate({username: username}, {sports: sport, about: description}, {new: true});
+  // console.log(update);
+  return next();
+};
+
 userController.getUser = async (req, res, next) => {
   try {
     const userDocs = await User.find({ _id });
