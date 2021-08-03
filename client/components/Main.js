@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div>
       <NavBar />
-      <button onClick={() => setToggle(!toggleCreator)}>
+      <button className="addEventButt" onClick={() => setToggle(!toggleCreator)}>
         {' '}
         {toggleCreator ? 'Add Event' : 'Back to Events'}
       </button>
