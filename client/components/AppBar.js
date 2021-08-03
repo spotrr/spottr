@@ -32,9 +32,9 @@ export default function NavBar() {
   const classes = useStyles();
   // const preventDefault = (event) => event.preventDefault();
   return (
-    <div className={classes.root}>
-      <AppBar position='static'>
-        <Toolbar>
+    <div className="nivBar" className={classes.root}>
+      <AppBar className="nivBar" position='static'>
+        <Toolbar className="nivBar">
           {/* <IconButton
             edge='start'
             className={classes.menuButton}

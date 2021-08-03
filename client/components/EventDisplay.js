@@ -34,7 +34,7 @@ const EventDisplay = (props) => {
   });
   return (
     <div className='displayBox'>
-      <h4>Events</h4>
+      <img id="icon1" src="../images/logo.png" alt=""/>
       {eachEvent}
     </div>
   );
